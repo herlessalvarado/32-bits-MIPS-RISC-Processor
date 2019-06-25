@@ -41,6 +41,9 @@ begin
 	readdata2 <= regmem[readadd2];
 end
 
+/*assign readdata1 = regmem[readadd1];
+assign readdata2 = regmem[readadd2];*/
+
 always @(negedge clk)
 begin
 	regmem[writeadd] <= writedata;
