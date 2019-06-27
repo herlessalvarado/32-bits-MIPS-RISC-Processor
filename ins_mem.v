@@ -7,8 +7,9 @@ reg [0:7] insmem [2047:0];
 
 initial
 begin
-	//$readmemb("insmem.txt",insmem);
-	//add
+	//$readmemb("r_instructions_insmem.txt",insmem);
+	$readmemb("i_instructions_insmem.txt",insmem);
+	/*//add
 	insmem[0] = 8'b00000001;
 	insmem[1] = 8'b01001011;
 	insmem[2] = 8'b01001000;
@@ -38,7 +39,7 @@ begin
 	insmem[21] = 8'b01001011;
 	insmem[22] = 8'b01001000;
 	insmem[23] = 8'b00101010;
-	//addi
+	//addi*/
 end
 
 always @(posedge clk)

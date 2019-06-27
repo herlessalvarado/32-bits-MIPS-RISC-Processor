@@ -1,4 +1,4 @@
-module r_type_prueba;
+module i_type_prueba;
 
 reg clk,reset;
 reg [0:4] rad1, rad2, writeadd;
@@ -42,19 +42,18 @@ begin
     rad2 <= instruction[11:15];
 	writeadd <= instruction[16:20];
 	func <= instruction[26:31];
-	sign_in <= instruction[16:31];
+    sign_in <= instruction[16:31];
 	#10 clk = !clk;
 end
 
 always begin
-	#21
-	case(func)
-		6'b100000: $display("%b + %b = %b, time=%d", readdata1, readdata2, writedata,$time); //add
-	 	6'b100010: $display("%b - %b = %b, time=%d", readdata1, readdata2, writedata,$time); //sub
-	 	6'b100100: $display("%b & %b = %b, time=%d", readdata1, readdata2, writedata,$time); //and
-	 	6'b100111: $display("~(%b | %b) = %b, time=%d", readdata1, readdata2, writedata,$time); //nor
-	 	6'b100101: $display("%b | %b = %b, time=%d", readdata1, readdata2, writedata,$time); //or
-	 	6'b101010: $display("%b < %b = %b, time=%d", readdata1, readdata2, writedata,$time); //slt*/
+    #21
+	case(Opcode)
+		6'b001000: $display("%b + %b = %b, time=%d", readdata1, sign_out, writedata,$time); //addi
+        6'b001111: $display("%b - %b = %b, time=%d", readdata1, sign_out, writedata,$time); //subi
+        6'b001100: $display("%b & %b = %b, time=%d", readdata1, sign_out, writedata,$time); //andi
+        6'b001101: $display("%b | %b = %b, time=%d", readdata1, sign_out, writedata,$time); //ori
+	 	6'b001010: $display("%b < %b = %b, time=%d", readdata1, sign_out, writedata,$time); //slti
 	endcase
 end
 
