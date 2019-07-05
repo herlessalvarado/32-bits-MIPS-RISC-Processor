@@ -1,4 +1,4 @@
-# 32-bits-RISC-MIPS-Processor
+# 32-bits-MIPS-RISC-Processor
 
 256 bytes Instruction Memory
 
