@@ -1,13 +1,15 @@
-module reg_file(clk,readadd1,readadd2,writeadd,writedata,readdata1,readdata2);
+module reg_file(clk,readadd1,readadd2,writeadd,writedata,RegWrite,readdata1,readdata2);
 
 input clk;
 input [0:4] readadd1;
 input [0:4] readadd2;
 input [0:4] writeadd;
 input [0:31] writedata;
+input [0:1] RegWrite;
 output reg [0:31] readdata1,readdata2;
 
 reg [0:31] regmem [31:0];
+reg [0:31] lui;
 
 initial
 begin
@@ -39,14 +41,29 @@ always @(posedge clk)
 begin
 	readdata1 <= regmem[readadd1];
 	readdata2 <= regmem[readadd2];
+	/*if (RegWrite == 1'b1) begin
+		$writememb("out.txt",regmem);
+	end*/
 end
-
-/*assign readdata1 = regmem[readadd1];
-assign readdata2 = regmem[readadd2];*/
 
 always @(negedge clk)
 begin
-	regmem[writeadd] <= writedata;
+	case (RegWrite)
+	2'b01: begin
+		regmem[writeadd] <= writedata;
+		$writememb("out.txt",regmem);
+	end 
+	2'b10: begin
+		lui[0:15] = writedata[16:31];
+		lui[16:31] = 1'b0;
+		regmem[writeadd] <= lui;
+		$writememb("out.txt",regmem);
+	end
+	2'b11: begin
+		regmem[writeadd] <= writedata;
+		$writememb("out.txt",regmem);
+	end 
+	endcase
 end
 
 endmodule

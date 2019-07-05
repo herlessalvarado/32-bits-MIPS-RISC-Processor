@@ -1,0 +1,10 @@
+RI type:
+iverilog ri_instructions_tb.v alu_control.v alu.v control.v data_memory.v ins_mem.v ins_mux_reg.v pc.v reg_file.v reg_mux_alu.v sign_extend.v data_mux_reg.v
+
+
+LS type:
+iverilog ls_instructions_tb.v alu_control.v alu.v control.v data_memory.v ins_mem.v ins_mux_reg.v pc.v reg_file.v reg_mux_alu.v sign_extend.v data_mux_reg.v
+
+
+J type:
+iverilog j_instructions_tb.v alu_control.v alu.v and.v control_mux_pc.v control.v data_memory.v data_mux_reg.v immediate_shift_left.v ins_mem.v ins_mux_reg.v pc_add_shift2.v pc_shift_left.v pc.v pc4_mux_sl2add.v rad1_mux_pc.v reg_file.v reg_mux_alu.v shift_plus_pc.v sign_extend.v

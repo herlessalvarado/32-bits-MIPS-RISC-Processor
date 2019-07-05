@@ -1,12 +1,13 @@
-module alu(clk,in1, in2, ALUControl, res);
+module alu(clk,in1, in2, ALUControl, res,zero);
 
 input clk;
 input [0:31] in1;
 input [0:31] in2;
 input [0:3] ALUControl;
 output reg [0:31] res;
+output reg zero;
 
-always @(posedge clk)
+always @(*)
 begin
 case (ALUControl)
 	//mips instruction
@@ -17,5 +18,17 @@ case (ALUControl)
 	 4'b0001: res = in1 | in2; //or
 	 4'b0111: res = in1 < in2; //slt
 endcase
+end
+
+always @(posedge clk)begin
+	if (res == 0)
+		zero = 1'b0;
+	else
+		zero = 1'b1;
+end
+
+always @(negedge clk)begin
+	if (res >= 0)
+		zero = 1'b1;
 end
 endmodule
