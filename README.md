@@ -3,6 +3,7 @@
 ![alt text](https://github.com/herlessjap/32-bits-MIPS-RISC-Processor/blob/master/src/datapath.png "Datapath")
 
 256 bytes Instruction Memory
+
 256 bytes Data Memory
 
 Big-endian datapath
