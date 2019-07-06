@@ -18,6 +18,9 @@ Big-endian datapath
 |     |      | lui |      |
 
 Three different testbenches:
+
 RI: First and Second column instructions
+
 LS: Third column instructions
+
 J: Fourth column instructions
