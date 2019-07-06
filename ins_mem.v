@@ -9,9 +9,9 @@ initial
 begin
 	//$readmemb("r_instructions_insmem.txt",insmem);
 	//$readmemb("i_instructions_insmem.txt",insmem);
-	//$readmemb("ri_instructions_insmem.txt",insmem);
+	$readmemb("ri_instructions_insmem.txt",insmem);
 	//$readmemb("ls_instructions_insmem.txt",insmem);
-	$readmemb("j_instructions_insmem.txt",insmem);
+	//$readmemb("j_instructions_insmem.txt",insmem);
 end
 
 always @(posedge clk)
